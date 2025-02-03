@@ -31,11 +31,13 @@ public class productController {
 		
 		return new ResponseEntity<>(product,HttpStatus.CREATED);
 	}
+	
 	 @GetMapping("/allproducts") 
 	 public ResponseEntity<List<Products>> getAllProducts(){
 		List<Products> product= productservice.getProducts();
 		return new ResponseEntity<>(product,HttpStatus.OK);
 	 }
+	 
 	 @PutMapping("/update/{productId}")
 	 public ResponseEntity<Products> updateProducts(@PathVariable int productId,@RequestBody Products products){
 		 Products product=	productservice.updateProducts(productId, products);
@@ -47,11 +49,13 @@ public class productController {
 		 List<Products> product=productservice.getLowStockProducts(thrashold);
 		 return new ResponseEntity<>(product,HttpStatus.OK);	
 		 }
+	 
 	 @GetMapping("/productbyname")
 	 public ResponseEntity<List<Products>> getProductsByName(@RequestParam String productName){
 		 List<Products> product =productservice.getProductsByName(productName);
 		 return new ResponseEntity<>(product,HttpStatus.OK);
 	 }
+	 
 	 @GetMapping("/zeroStock")
 	 public ResponseEntity<List<Products>> getZeroStockProducts(){
 		 List<Products> products=productservice.getPrdoctsWithZeroStock();
